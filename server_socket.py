@@ -47,7 +47,41 @@ try:
             file_datos.write(datos)
             file_datos.close()
             #...
-            
+            datos_nuevos = data.decode('utf-8')
+            # Dividir la trama por líneas
+            lineas = datos_nuevos.splitlines()
+            # Procesar datos por línea
+            for linea in lineas[12:]:  # Empezar desde la línea 13 (D;...)
+                if linea.startswith("D;"):
+                    # Separar valores por punto y coma
+                    valores = linea.split(";")
+
+                    # Extraer datos de interés
+                    fecha = valores[1].split(" ")[0]  # Extraer solo la fecha
+                    nivel = float(valores[3].split(",")[0])
+                    velocidad = float(valores[5].split(",")[0])
+                    descarga = float(valores[7].split(",")[0].replace("m³", ""))  # Eliminar símbolo de unidad
+
+                    # Crear documento para MongoDB
+                    documento = {
+                        "fecha": fecha,
+                        "nivel": nivel,
+                        "velocidad": velocidad,
+                        "descarga": descarga
+                        # "datos_originales": Binary(trama.encode("utf-8")),  # Guardar trama completa (opcional)
+                    }
+
+                    # Insertar documento en la colección
+                    # collection.insert_one(documento)
+
+            # Cerrar conexión
+            client.close()
+
+            print("Datos almacenados en la colección rio_yi.")
+
+
+
+
         else:
             break  # Salir del bucle si no hay más datos
 except OSError as e:
