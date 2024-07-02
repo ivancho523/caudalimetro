@@ -70,18 +70,13 @@ try:
                         "descarga": descarga
                         # "datos_originales": Binary(trama.encode("utf-8")),  # Guardar trama completa (opcional)
                     }
-
+                    print(documento)
                     # Insertar documento en la colección
                     # collection.insert_one(documento)
 
             # Cerrar conexión
             client.close()
-
             print("Datos almacenados en la colección rio_yi.")
-
-
-
-
         else:
             break  # Salir del bucle si no hay más datos
 except OSError as e:
