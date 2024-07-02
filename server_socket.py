@@ -73,6 +73,9 @@ try:
                         # "datos_originales": Binary(trama.encode("utf-8")),  # Guardar trama completa (opcional)
                     }
                     print(documento)
+                    file_datos_exactos = open("/home/caudalimetro/valores_exactos.txt", "a+")
+                    file_datos_exactos.write(datos)
+                    file_datos_exactos.close()
                     # Insertar documento en la colección
                     # collection.insert_one(documento)
 
