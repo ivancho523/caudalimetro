@@ -55,7 +55,6 @@ try:
                 if linea.startswith("D;"):
                     # Separar valores por punto y coma
                     valores = linea.split(";")
-
                     # Extraer datos de interés
                     fecha = valores[1].split(" ")[0]  # Extraer solo la fecha
                     nivel = float(valores[3].split(",")[0])
