@@ -57,13 +57,16 @@ try:
                     valores = linea.split(";")
                     # Extraer datos de interés
                     fecha = valores[1].split(" ")[0]  # Extraer solo la fecha
-                    nivel = float(valores[3].split(",")[0])
-                    velocidad = float(valores[5].split(",")[0])
-                    descarga = float(valores[7].split(",")[0].replace("m³", ""))  # Eliminar símbolo de unidad
+                    hora = valores[1].split(" ")[1] # Extraer solo la hora
+                    # nivel = float(valores[3].split(",")[0])
+                    nivel = float(valores[2])
+                    velocidad = float(valores[3])
+                    descarga = float(valores[5])  # Eliminar símbolo de unidad
 
                     # Crear documento para MongoDB
                     documento = {
                         "fecha": fecha,
+                        "hora": hora,
                         "nivel": nivel,
                         "velocidad": velocidad,
                         "descarga": descarga
