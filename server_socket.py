@@ -50,6 +50,8 @@ try:
             datos_nuevos = data.decode('utf-8')
             # Dividir la trama por líneas
             lineas = datos_nuevos.splitlines()
+            print ("########## estas son las líneas########")
+            print (lineas)
             # Procesar datos por línea
             for linea in lineas[12:]:  # Empezar desde la línea 13 (D;...)
                 if linea.startswith("D;"):
@@ -62,7 +64,6 @@ try:
                     nivel = float(valores[2])
                     velocidad = float(valores[3])
                     descarga = float(valores[5])  # Eliminar símbolo de unidad
-
                     # Crear documento para MongoDB
                     documento = {
                         "fecha": fecha,
@@ -78,7 +79,6 @@ try:
                     file_datos_exactos.close()
                     # Insertar documento en la colección
                     # collection.insert_one(documento)
-
             # Cerrar conexión
             client.close()
             print("Datos almacenados en la colección rio_yi.")
