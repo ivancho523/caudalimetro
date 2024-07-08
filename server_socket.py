@@ -78,10 +78,11 @@ try:
                     file_datos_exactos.write(datos)
                     file_datos_exactos.close()
                     # Insertar documento en la colección
-                    # collection.insert_one(documento)
+                    collection.insert_one(documento)
+                    print("Datos almacenados en la colección rio_yi.")
             # Cerrar conexión
             client.close()
-            print("Datos almacenados en la colección rio_yi.")
+            
         else:
             break  # Salir del bucle si no hay más datos
 except OSError as e:
