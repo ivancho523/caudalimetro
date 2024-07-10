@@ -71,14 +71,14 @@ try:
                         "nivel": nivel,
                         "velocidad": velocidad,
                         "descarga": descarga
-                        # "datos_originales": Binary(trama.encode("utf-8")),  # Guardar trama completa (opcional)
                     }
                     print(documento)
                     # file_datos_exactos = open("/home/caudalimetro/valores_exactos.txt", "a+")
                     # file_datos_exactos.write(str(documento))
                     # file_datos_exactos.close()
                     # Insertar documento en la colección
-                    collection.insert_one(documento)
+                    insertar = collection.insert_one(documento)
+                    print(f"ID del dato: {insertar.inserted_id}")
                     print("Datos almacenados en la colección rio_yi.")
             # Cerrar conexión
             client.close()
