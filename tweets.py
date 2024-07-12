@@ -51,11 +51,11 @@ plt.plot(completo, niveles, label="Nivel")
 # plt.plot(completo, velocidades, label="Velocidad")
 # plt.plot(completo, descargas, label="Descarga")
 
-plt.xlabel("Hora")
-plt.ylabel("Valor")
-plt.title("Datos del Río Yi - Últimas 24 horas")
+plt.xlabel("Fecha")
+plt.ylabel("Nivel (m)")
+plt.title("Nivel Río Yi - Últimas 24 horas")
 
-plt.legend()
+# plt.legend()
 plt.grid(False)
 
 # Guardar la gráfica como imagen JPEG
