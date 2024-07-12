@@ -34,15 +34,21 @@ velocidades = []
 descargas = []
 
 for dato in results:
-    completo.append(dato["fecha"]+" "+dato["hora"])
-    fechas.append(dato["fecha"])
-    horas.append(dato["hora"])
-    niveles.append(dato["nivel"])
-    velocidades.append(dato["velocidad"])
-    descargas.append(dato["descarga"])
+    completo.insert(0, dato["fecha"]+" "+dato["hora"])
+    niveles.insert(0, dato["nivel"])
+    velocidades.insert(0, dato["velocidad"])
+    descargas.insert(0, dato["descarga"])
 
-print(completo)
-print(niveles)
+    # completo.append(dato["fecha"]+" "+dato["hora"])
+    # niveles.append(dato["nivel"])
+    # velocidades.append(dato["velocidad"])
+    # descargas.append(dato["descarga"])
+
+#REORDENAR LA LISTA
+
+
+# print(completo)
+# print(niveles)
 # print(velocidades)
 # print(descargas)
 
