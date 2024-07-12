@@ -39,13 +39,8 @@ for dato in results:
     velocidades.insert(0, float(dato["velocidad"].replace(",", ".")))
     descargas.insert(0, float(dato["descarga"].replace(",", ".")))
 
-    # completo.append(dato["fecha"]+" "+dato["hora"])
-    # niveles.append(dato["nivel"])
-    # velocidades.append(dato["velocidad"])
-    # descargas.append(dato["descarga"])
-
-print(completo)
-print(niveles)
+# print(completo)
+# print(niveles)
 # print(velocidades)
 # print(descargas)
 
@@ -53,8 +48,8 @@ print(niveles)
 plt.figure(figsize=(10, 6))
 
 plt.plot(completo, niveles, label="Nivel")
-plt.plot(completo, velocidades, label="Velocidad")
-plt.plot(completo, descargas, label="Descarga")
+# plt.plot(completo, velocidades, label="Velocidad")
+# plt.plot(completo, descargas, label="Descarga")
 
 plt.xlabel("Hora")
 plt.ylabel("Valor")
