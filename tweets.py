@@ -22,9 +22,8 @@ sort_order = [('_id', pymongo.DESCENDING)]
 limit_value = 288 
 datos = coleccion.find(query).sort(sort_order).limit(limit_value)
 results = list(datos)
-print(datos)
-print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
-print(results)
+
+# print(results)
 
 # Extraer los valores de las variables
 fechas = []
@@ -33,7 +32,7 @@ niveles = []
 velocidades = []
 descargas = []
 
-for dato in datos:
+for dato in results:
     fechas.append(dato["fecha"])
     horas.append(dato["hora"])
     niveles.append(dato["nivel"])
