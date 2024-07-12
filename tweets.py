@@ -15,7 +15,16 @@ fecha_hora_anterior = fecha_hora_actual - datetime.timedelta(days=1)
 print(fecha_hora_anterior)
 print(fecha_hora_actual)
 
-datos = coleccion.find({"$and": [{"fecha": {"$gte": fecha_hora_anterior}}, {"fecha": {"$lt": fecha_hora_actual}}]})
+# datos = coleccion.find({"$and": [{"fecha": {"$gte": fecha_hora_anterior}}, {"fecha": {"$lt": fecha_hora_actual}}]})
+
+query = {} 
+sort_order = [('_id', pymongo.DESCENDING)] 
+limit_value = 288 
+datos = coleccion.find(query).sort(sort_order).limit(limit_value)
+results = list(datos)
+print(datos)
+print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+print(results)
 
 # Extraer los valores de las variables
 fechas = []
