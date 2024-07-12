@@ -35,7 +35,7 @@ descargas = []
 
 for dato in results:
     completo.insert(0, dato["fecha"]+" "+dato["hora"])
-    niveles.insert(0, dato["nivel"])
+    niveles.insert(0, float(dato["nivel"]))
     velocidades.insert(0, dato["velocidad"])
     descargas.insert(0, dato["descarga"])
 
