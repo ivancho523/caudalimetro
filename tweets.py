@@ -94,7 +94,7 @@ media_id = api.media_upload(filename="/home/caudalimetro/imagen/grafica_rio_yi.j
 print(media_id)
 
 # Text to be Tweeted
-text = "Datos Monitoreo Río Yi"
+text = f"Datos Monitoreo Río Yi; Nivel Actual: {niveles[-1]} metros"
 
 # Send Tweet with Text and media ID
 client.create_tweet(text=text, media_ids=[media_id])
