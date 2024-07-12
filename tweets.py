@@ -44,11 +44,8 @@ for dato in results:
     # velocidades.append(dato["velocidad"])
     # descargas.append(dato["descarga"])
 
-#REORDENAR LA LISTA
-
-
-# print(completo)
-# print(niveles)
+print(completo)
+print(niveles)
 # print(velocidades)
 # print(descargas)
 
