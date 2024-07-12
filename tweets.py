@@ -41,17 +41,17 @@ for dato in results:
     velocidades.append(dato["velocidad"])
     descargas.append(dato["descarga"])
 
-print(horas)
+print(completo)
 print(niveles)
-print(velocidades)
-print(descargas)
+# print(velocidades)
+# print(descargas)
 
 # Crear la gráfica
 plt.figure(figsize=(10, 6))
 
-plt.plot(horas, niveles, label="Nivel")
-plt.plot(horas, velocidades, label="Velocidad")
-plt.plot(horas, descargas, label="Descarga")
+plt.plot(completo, niveles, label="Nivel")
+# plt.plot(completo, velocidades, label="Velocidad")
+# plt.plot(completo, descargas, label="Descarga")
 
 plt.xlabel("Hora")
 plt.ylabel("Valor")
