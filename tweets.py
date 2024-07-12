@@ -1,4 +1,57 @@
 import tweepy
+import pymongo
+import matplotlib.pyplot as plt
+import datetime
+
+# Conexión a la base de datos MongoDB
+cliente = pymongo.MongoClient("mongodb://localhost:27017/")
+base_datos = cliente["caudalimetro"]
+coleccion = base_datos["rio_yi"]
+
+# Obtener los datos de las últimas 24 horas
+fecha_hora_actual = datetime.datetime.now()
+fecha_hora_anterior = fecha_hora_actual - datetime.timedelta(days=1)
+
+datos = coleccion.find({"$and": [{"fecha": {"$gte": fecha_hora_anterior}}, {"fecha": {"$lt": fecha_hora_actual}}]})
+
+# Extraer los valores de las variables
+fechas = []
+horas = []
+niveles = []
+velocidades = []
+descargas = []
+
+for dato in datos:
+    fechas.append(dato["fecha"])
+    horas.append(dato["hora"])
+    niveles.append(dato["nivel"])
+    velocidades.append(dato["velocidad"])
+    descargas.append(dato["descarga"])
+
+# Crear la gráfica
+plt.figure(figsize=(10, 6))
+
+plt.plot(horas, niveles, label="Nivel")
+plt.plot(horas, velocidades, label="Velocidad")
+plt.plot(horas, descargas, label="Descarga")
+
+plt.xlabel("Hora")
+plt.ylabel("Valor")
+plt.title("Datos del Río Yi - Últimas 24 horas")
+
+plt.legend()
+plt.grid(True)
+
+# Guardar la gráfica como imagen JPEG
+carpeta_imagenes = "/home/caudalimetro/imagen"
+nombre_imagen = "grafica_rio_yi.jpeg"
+
+plt.savefig(f"{carpeta_imagenes}/{nombre_imagen}")
+
+print(f"Gráfica guardada en: {carpeta_imagenes}/{nombre_imagen}")
+
+
+
 
 # Ingresa tus credenciales de API de Twitter
 consumer_key = "Kb3pAaHpcDG7qtWsBIqy6syYg"
@@ -31,21 +84,12 @@ client = tweepy.Client(
 )
 
 # Upload image to Twitter. Replace 'filename' your image filename.
-media_id = api.media_upload(filename="prueba.bmp").media_id_string
+media_id = api.media_upload(filename="/home/caudalimetro/imagen/grafica_rio_yi.jpeg").media_id_string
 print(media_id)
 
 # Text to be Tweeted
-text = "Hello Twitter!"
+text = "Datos Monitoreo Río YI"
 
 # Send Tweet with Text and media ID
 client.create_tweet(text=text, media_ids=[media_id])
 print("Tweeted!")
-# # Mensaje del tweet
-# mensaje = "Este es un tweet publicado desde Python!"
-
-# # Publica el tweet
-# try:
-#     api.update_status(status=mensaje)
-#     print("Tweet publicado con éxito!")
-# except:
-#     print("Error al publicar tweet")
