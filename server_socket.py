@@ -58,6 +58,7 @@ try:
                     # Separar valores por punto y coma
                     valores = linea.split(";")
                     # Extraer datos de interés
+                    date = valores[1] # Extraer fecha completa
                     fecha = valores[1].split(" ")[0]  # Extraer solo la fecha
                     hora = valores[1].split(" ")[1] # Extraer solo la hora
                     # nivel = float(valores[3].split(",")[0])
@@ -66,6 +67,7 @@ try:
                     descarga = valores[5]  # Eliminar símbolo de unidad
                     # Crear documento para MongoDB
                     documento = {
+                        "date": date,
                         "fecha": fecha,
                         "hora": hora,
                         "nivel": nivel,

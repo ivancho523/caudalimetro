@@ -26,6 +26,7 @@ results = list(datos)
 # print(results)
 
 # Extraer los valores de las variables
+completo = []
 fechas = []
 horas = []
 niveles = []
@@ -33,6 +34,7 @@ velocidades = []
 descargas = []
 
 for dato in results:
+    completo.append(dato["fecha"]+" "+dato["hora"])
     fechas.append(dato["fecha"])
     horas.append(dato["hora"])
     niveles.append(dato["nivel"])
