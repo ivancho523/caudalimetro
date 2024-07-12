@@ -12,6 +12,9 @@ coleccion = base_datos["rio_yi"]
 fecha_hora_actual = datetime.datetime.now()
 fecha_hora_anterior = fecha_hora_actual - datetime.timedelta(days=1)
 
+print(fecha_hora_anterior)
+print(fecha_hora_actual)
+
 datos = coleccion.find({"$and": [{"fecha": {"$gte": fecha_hora_anterior}}, {"fecha": {"$lt": fecha_hora_actual}}]})
 
 # Extraer los valores de las variables
@@ -27,6 +30,11 @@ for dato in datos:
     niveles.append(dato["nivel"])
     velocidades.append(dato["velocidad"])
     descargas.append(dato["descarga"])
+
+print(horas)
+print(niveles)
+print(velocidades)
+print(descargas)
 
 # Crear la gráfica
 plt.figure(figsize=(10, 6))
