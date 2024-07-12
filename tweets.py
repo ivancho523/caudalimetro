@@ -36,8 +36,8 @@ descargas = []
 for dato in results:
     completo.insert(0, dato["fecha"]+" "+dato["hora"])
     niveles.insert(0, float(dato["nivel"].replace(",", ".")))
-    velocidades.insert(0, dato["velocidad"])
-    descargas.insert(0, dato["descarga"])
+    velocidades.insert(0, float(dato["velocidades"].replace(",", ".")))
+    descargas.insert(0, float(dato["descargas"].replace(",", ".")))
 
     # completo.append(dato["fecha"]+" "+dato["hora"])
     # niveles.append(dato["nivel"])
@@ -53,15 +53,15 @@ print(niveles)
 plt.figure(figsize=(10, 6))
 
 plt.plot(completo, niveles, label="Nivel")
-# plt.plot(completo, velocidades, label="Velocidad")
-# plt.plot(completo, descargas, label="Descarga")
+plt.plot(completo, velocidades, label="Velocidad")
+plt.plot(completo, descargas, label="Descarga")
 
 plt.xlabel("Hora")
 plt.ylabel("Valor")
 plt.title("Datos del Río Yi - Últimas 24 horas")
 
 plt.legend()
-plt.grid(True)
+plt.grid(False)
 
 # Guardar la gráfica como imagen JPEG
 carpeta_imagenes = "/home/caudalimetro/imagen"
